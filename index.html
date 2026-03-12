@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>顾开颜｜个人主页</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="顾开颜的个人主页，包含教育背景、项目经历、技能栈与联系方式，意向岗位全栈开发实习生。" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --bg-elevated: #ffffff;
+      --text: #111827;
+      --text-soft: #6b7280;
+      --border-subtle: rgba(15,23,42,0.08);
+      --accent: #4f46e5;
+      --accent-soft: rgba(79,70,229,0.08);
+      --accent-strong: #6366f1;
+      --muted: #9ca3af;
+      --danger: #ef4444;
+      --shadow-soft: 0 18px 40px rgba(15,23,42,0.10);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+      --nav-blur-bg: rgba(247,247,251,0.85);
+      --nav-border: rgba(148,163,184,0.3);
+    }
+
+    [data-theme="dark"] {
+      --bg: #020617;
+      --bg-elevated: rgba(15,23,42,0.9);
+      --text: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border-subtle: rgba(148,163,184,0.35);
+      --accent: #6366f1;
+      --accent-soft: rgba(99,102,241,0.16);
+      --accent-strong: #818cf8;
+      --muted: #6b7280;
+      --danger: #f87171;
+      --shadow-soft: 0 18px 50px rgba(15,23,42,0.75);
+      --nav-blur-bg: rgba(2,6,23,0.78);
+      --nav-border: rgba(51,65,85,0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% -10%, rgba(129,140,248,0.25), transparent 55%),
+        radial-gradient(1100px 900px at 110% 10%, rgba(45,212,191,0.2), transparent 60%),
+        radial-gradient(900px 900px at 0% 120%, rgba(251,113,133,0.18), transparent 60%),
+        var(--bg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      width: min(1120px, 100% - 40px);
+      margin: 0 auto;
+    }
+
+    /* Top nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--nav-border);
+      background: var(--nav-blur-bg);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0 10px;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 16px;
+      background:
+        radial-gradient(18px 18px at 25% 25%, rgba(255,255,255,0.9), transparent 60%),
+        conic-gradient(from 160deg, #4f46e5, #06b6d4, #22c55e, #f97316, #4f46e5);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-soft);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-role {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      border: 1px solid transparent;
+      transition: all 0.18s ease-out;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      border-color: var(--border-subtle);
+      background: rgba(15,23,42,0.02);
+    }
+
+    .nav-link.active {
+      color: var(--accent-strong);
+      background: var(--accent-soft);
+      border-color: transparent;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: rgba(255,255,255,0.85);
+      color: var(--text);
+      padding: 8px 14px;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+    }
+
+    [data-theme="dark"] .btn {
+      background: rgba(15,23,42,0.9);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15,23,42,0.18);
+      border-color: rgba(148,163,184,0.7);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-style: dashed;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      border-color: transparent;
+      color: #f9fafb;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.04);
+      box-shadow: 0 10px 24px rgba(37,99,235,0.45);
+    }
+
+    .btn-icon {
+      font-size: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px 4px 5px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255,255,255,0.9);
+      color: var(--text-soft);
+      font-size: 11px;
+    }
+
+    [data-theme="dark"] .pill {
+      background: rgba(15,23,42,0.95);
+    }
+
+    .dot-live {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,0.20);
+    }
+
+    /* Hero */
+    main {
+      padding: 26px 0 36px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 55%),
+      var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+    }
+
+    [data-theme="dark"] .card {
+      background:
+        radial-gradient(circle at top left, rgba(148,163,184,0.12), transparent 55%),
+        var(--bg-elevated);
+    }
+
+    .card-body {
+      padding: 22px 22px 20px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      margin: 0 0 8px;
+      font-size: clamp(26px, 3.5vw, 34px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 16px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255,255,255,0.75);
+      color: var(--text-soft);
+      font-size: 12px;
+      transition: all 0.18s ease-out;
+    }
+
+    [data-theme="dark"] .tag {
+      background: rgba(15,23,42,0.95);
+    }
+
+    .tag:hover {
+      border-color: rgba(99,102,241,0.7);
+      color: var(--accent-strong);
+      transform: translateY(-1px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-secondary {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Profile / sidebar */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      background:
+        radial-gradient(28px 28px at 30% 25%, rgba(255,255,255,0.85), transparent 55%),
+        linear-gradient(135deg, #22c55e, #06b6d4);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .profile-main {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .profile-name {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .profile-role {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .profile-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .meta-chip {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--muted);
+    }
+
+    .profile-lines {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1.1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .contact-item {
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px dashed var(--border-subtle);
+      background: rgba(255,255,255,0.85);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      transition: all 0.18s ease-out;
+    }
+
+    [data-theme="dark"] .contact-item {
+      background: rgba(15,23,42,0.9);
+    }
+
+    .contact-item:hover {
+      border-style: solid;
+      border-color: rgba(79,70,229,0.6);
+      transform: translateY(-1px);
+    }
+
+    .contact-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .contact-value {
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      font-size: 11px;
+      margin-left: auto;
+      margin-top: 2px;
+      color: var(--accent-strong);
+      cursor: pointer;
+      opacity: 0.85;
+    }
+
+    .copy-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      margin-top: 18px;
+    }
+
+    .section-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: rgba(255,255,255,0.9);
+      padding: 18px 18px 16px;
+      box-shadow: 0 16px 36px rgba(15,23,42,0.08);
+    }
+
+    [data-theme="dark"] .section-card {
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.08), transparent 55%),
+        var(--bg-elevated);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-tagline {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pill-small {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.45);
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .section-body {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    /* Education & honors */
+    .edu-list {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .edu-item {
+      padding: 10px 10px 9px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: rgba(249,250,251,0.9);
+      display: grid;
+      grid-template-columns: minmax(0,2fr) minmax(0,1.1fr);
+      gap: 6px 16px;
+      align-items: baseline;
+    }
+
+    [data-theme="dark"] .edu-item {
+      background: rgba(15,23,42,0.9);
+    }
+
+    .edu-main {
+      min-width: 0;
+    }
+
+    .edu-school {
+      font-weight: 550;
+      font-size: 13px;
+    }
+
+    .edu-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .edu-extra {
+      font-size: 12px;
+      color: var(--text-soft);
+      text-align: right;
+    }
+
+    .award-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 16px;
+      margin: 0;
+    }
+
+    .award-item {
+      list-style: disc;
+      font-size: 12px;
+    }
+
+    /* Experience / projects */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 16px;
+      border-radius: var(--radius-md);
+      padding: 10px 12px 10px 16px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(249,250,251,0.9);
+      overflow: hidden;
+    }
+
+    [data-theme="dark"] .timeline-item {
+      background: rgba(15,23,42,0.92);
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 14px;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .timeline-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .timeline-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .timeline-tag {
+      font-size: 11px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.02);
+      border: 1px solid var(--border-subtle);
+      color: var(--muted);
+    }
+
+    .timeline-body {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    .timeline-body ul {
+      margin: 4px 0 2px;
+      padding-left: 18px;
+    }
+
+    .timeline-body li {
+      margin-bottom: 2px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr);
+      gap: 12px;
+    }
+
+    .skill-group-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-badge {
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(249,250,251,0.95);
+      color: var(--text-soft);
+      cursor: default;
+      transition: all 0.18s ease-out;
+    }
+
+    [data-theme="dark"] .skill-badge {
+      background: rgba(15,23,42,0.9);
+    }
+
+    .skill-badge:hover {
+      border-color: rgba(79,70,229,0.7);
+      color: var(--accent-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15,23,42,0.18);
+    }
+
+    .skill-desc {
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      padding: 12px 12px 11px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: rgba(249,250,251,0.95);
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    [data-theme="dark"] .contact-card {
+      background: rgba(15,23,42,0.9);
+    }
+
+    .contact-cta {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      padding: 16px 0 24px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid rgba(148,163,184,0.35);
+    }
+
+    /* Utilities */
+    .kbd {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      border: 1px solid rgba(148,163,184,0.7);
+      background: rgba(15,23,42,0.02);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .accent {
+      color: var(--accent-strong);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .card-body {
+        padding: 18px 16px 16px;
+      }
+
+      .contact-list {
+        grid-template-columns: minmax(0,1.2fr) minmax(0,1.2fr);
+      }
+
+      .skills-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 24px, 520px);
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn,
+      .hero-actions .btn-ghost {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .edu-item {
+        grid-template-columns: minmax(0,1fr);
+        text-align: left;
+      }
+
+      .edu-extra {
+        text-align: left;
+      }
+
+      .contact-list {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001s !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="page nav-inner">
+      <a href="#top" class="brand" aria-label="回到顶部">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-text">
+          <div class="brand-name">顾开颜</div>
+          <div class="brand-role">全栈开发实习生｜AI 教育方向</div>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="页面导航">
+        <a class="nav-link" href="#about">简介</a>
+        <a class="nav-link" href="#education">教育</a>
+        <a class="nav-link" href="#experience">项目</a>
+        <a class="nav-link" href="#skills">技能</a>
+        <a class="nav-link" href="#contact">联系</a>
+        <button class="btn btn-ghost" id="themeToggle" type="button">
+          <span class="btn-icon" aria-hidden="true">☀️</span>
+          <span id="themeLabel">浅色</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="page" tabindex="-1">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <article class="card">
+        <div class="card-body">
+          <div class="hero-kicker">
+            <span class="pill">
+              <span class="dot-live" aria-hidden="true"></span>
+              <span>寻找全栈开发实习机会</span>
+            </span>
+            <span class="pill-small">意向｜全栈开发实习生</span>
+          </div>
+          <h1 class="hero-title">
+            从电子工程到 AI 全栈，<span class="accent">把工程思维用在教育产品上。</span>
+          </h1>
+          <p class="hero-subtitle">
+            北京邮电大学电子工程本科 &amp; 信息与通信工程硕士，在国家奖学金、电子设计竞赛一等奖等经历中，
+            逐步形成了<strong>自驱学习、独立完成完整项目落地</strong>的能力。希望在 AI 教育产品（如 Math Tutor）
+            中，从底层代码和工程实践出发，做真正能改善学习体验的工具。
+          </p>
+          <ul class="hero-tags" aria-label="关键词标签">
+            <li class="tag">Python &amp; 工程实践</li>
+            <li class="tag">全流程项目落地</li>
+            <li class="tag">AI 教育产品兴趣</li>
+            <li class="tag">快速学习新技术</li>
+            <li class="tag">跨学科问题求解</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">联系我，约个时间聊 👋</a>
+            <button class="btn" type="button" id="copyEmailBtn">
+              复制邮箱
+              <span class="kbd" aria-hidden="true">Ctrl + V</span>
+            </button>
+          </div>
+          <div class="hero-secondary">
+            入门期我可以迅速熟悉团队技术栈；从第 2 个月起，希望能
+            <strong>独立维护一个完整模块或小型项目</strong>，从需求到上线闭环负责。
+          </div>
+        </div>
+      </article>
+
+      <aside class="card">
+        <div class="card-body profile">
+          <div class="profile-header">
+            <div class="avatar" aria-hidden="true">GKY</div>
+            <div class="profile-main">
+              <h2 class="profile-name">顾开颜</h2>
+              <p class="profile-role">北京邮电大学｜信息与通信工程</p>
+              <div class="profile-meta">
+                <div class="meta-chip">Base｜北京 / 远程</div>
+                <div class="meta-chip">状态｜可实习 / 长期</div>
+              </div>
+            </div>
+          </div>
+          <div class="profile-lines">
+            当前就读于北京邮电大学信息与通信工程学院，研究方向兼具
+            <span class="accent">智能体网络、信号与算法</span> 与 <span class="accent">工程实现</span>。
+            在多次电子设计竞赛与网络仿真实战中，从需求拆解、算法验证到系统实现与文档输出，
+            形成了偏工程实践的完整闭环能力。
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="contact-label">手机</span>
+              <span class="contact-value" id="phoneText">17301353169</span>
+              <span class="copy-btn" data-copy-target="phoneText">复制</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">邮箱</span>
+              <span class="contact-value" id="emailText">gukaiyan@bupt.edu.cn</span>
+              <span class="copy-btn" data-copy-target="emailText">复制</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">政治面貌</span>
+              <span class="contact-value">中共党员</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">地址</span>
+              <span class="contact-value">北京｜可线下 / 远程</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            教育背景
+          </div>
+          <div class="section-tagline">
+            北京邮电大学本硕，工科底层扎实
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="edu-main">
+                <div class="edu-school">北京邮电大学｜电子工程学院</div>
+                <div class="edu-meta">电子信息科学与技术（本科）</div>
+              </div>
+              <div class="edu-extra">2021.09 - 2025.06</div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-main">
+                <div class="edu-school">北京邮电大学｜信息与通信工程学院</div>
+                <div class="edu-meta">信息与通信工程（研究生）</div>
+              </div>
+              <div class="edu-extra">2025.09 - 至今</div>
+            </div>
+          </div>
+
+          <div class="section-header" style="margin-top:8px;">
+            <div class="section-title" style="font-size:14px;">
+              获得奖励及荣誉
+            </div>
+            <span class="pill-small">Top Performer</span>
+          </div>
+          <ul class="award-list">
+            <li class="award-item">2021-2022 学年 国家奖学金（约 1%）</li>
+            <li class="award-item">2024 年 全国大学生电子设计竞赛模拟邀请赛 全国一等奖</li>
+            <li class="award-item">2023 年 全国大学生电子设计竞赛 全国一等奖</li>
+            <li class="award-item">2022-2023、2023-2024 学年 北邮校级一等奖学金（约 3%）</li>
+            <li class="award-item">2021-2022、2022-2023、2023-2024 学年 北京邮电大学三好学生</li>
+            <li class="award-item">2025 年 北京邮电大学优秀毕业生</li>
+          </ul>
+        </div>
+
+      </div>
+
+
+
+    </section>
+
+    <!-- Projects / Experience -->
+    <section id="experience">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            项目 &amp; 工程实践
+          </div>
+          <div class="section-tagline">
+            从软硬件集成到网络仿真，强调可落地与可维护
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="timeline">
+            <!-- Project 1 -->
+            <article class="timeline-item">
+              <h3 class="timeline-title">基于 NFC 的发光摸鱼神器｜全流程设计与开发</h3>
+              <p class="timeline-subtitle">
+                独立负责前端网页设计、后端功能衔接及工程化部署
+              </p>
+              <div class="timeline-meta">
+                <span class="timeline-tag">前端展示页</span>
+                <span class="timeline-tag">GitHub 工程化</span>
+                <span class="timeline-tag">软硬件协同</span>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>独立搭建项目前端网页，实现功能展示、操作交互等核心模块，关注界面清晰度、
+                    交互顺滑度与不同终端的适配性。</li>
+                  <li>完成 GitHub 工程化部署，掌握版本管理、开源可访问与基础上线流程，
+                    具备从 0 到 1 落地完整项目的能力。</li>
+                  <li>统筹器件选型、电路原理图设计、ADS 仿真、PCB 版图绘制与制板、电路焊接调试等全流程，
+                    将“摸鱼神器”从想法变成真正可用的小产品。</li>
+                  <li>熟练使用嘉立创 EDA、ADS 等工具，在软硬件技术融合中提升了工程实践与跨领域问题解决能力。</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="timeline-item">
+              <h3 class="timeline-title">同轴电缆长度与终端负载检测装置｜全国大学生电子设计竞赛一等奖项目</h3>
+              <p class="timeline-subtitle">
+                负责算法建模、仿真验证、数据处理与技术文档撰写
+              </p>
+              <div class="timeline-meta">
+                <span class="timeline-tag">算法建模</span>
+                <span class="timeline-tag">MATLAB</span>
+                <span class="timeline-tag">Multisim 仿真</span>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>基于同轴电缆分布参数特性，独立完成算法建模与仿真验证，
+                    使用 Multisim 对不同负载场景进行仿真测试，解决模型偏差、数据失真等问题。</li>
+                  <li>使用 MATLAB 进行回波幅度理论计算、数据插值与拟合，实现原始数据的高效处理与分析，
+                    为后续系统设计提供可靠依据。</li>
+                  <li>参与系统结果显示模块设计，衔接硬件检测与软件展示，理解前后端数据交互的核心逻辑
+                    ——这一点可以迁移到 AI 教育产品的“模型结果可视化”与“前端交互”。</li>
+                  <li>独立完成项目技术报告撰写，清晰梳理技术思路、实现步骤与实验结果，具备扎实的技术文档输出与逻辑表达能力。</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="timeline-item">
+              <h3 class="timeline-title">大型企业跨市千人级网络｜模拟配置与搭建项目</h3>
+              <p class="timeline-subtitle">
+                独立完成网络拓扑设计、设备选型与核心技术配置及安全方案
+              </p>
+              <div class="timeline-meta">
+                <span class="timeline-tag">Packet Tracer</span>
+                <span class="timeline-tag">OSPF / VLAN / ACL</span>
+                <span class="timeline-tag">网络安全策略</span>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>基于 Packet Tracer，独立设计跨市千人规模企业的网络拓扑结构，
+                    完成路由器、交换机等设备的规划与配置。</li>
+                  <li>配置 OSPF 动态路由、VLAN、ACL 等技术，实现企业内部网络互通、
+                    外网访问及特定服务器访问控制。</li>
+                  <li>在设计中充分考虑网络各层安全需求，独立制定安全防护措施，兼顾扩展性与稳定性。</li>
+                  <li>在短时间内完成从网络配置入门到项目落地，体现了对新技术的<strong>快速学习与迁移能力</strong>。</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Student work -->
+            <article class="timeline-item">
+              <h3 class="timeline-title">学生工作｜研究生会 &amp; 学生会</h3>
+              <p class="timeline-subtitle">
+                校研究生会权益部、院研究生会学术职发部成员｜曾任生活权益部负责人、班级体育委员
+              </p>
+              <div class="timeline-meta">
+                <span class="timeline-tag">跨部门沟通</span>
+                <span class="timeline-tag">需求对接</span>
+                <span class="timeline-tag">项目统筹</span>
+              </div>
+              <div class="timeline-body">
+                <ul>
+                  <li>长期参与学生组织工作，积累了跨部门沟通协作与需求对接经验，
+                    能够在技术团队中准确理解需求、拆解任务并推进落地。</li>
+                  <li>具有活动与项目统筹经验，兼顾整体节奏与关键细节，适合在独立负责模块/小项目时把控优先级与风险。</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            技能栈 &amp; 能力映射
+          </div>
+          <div class="section-tagline">
+            面向「全栈开发实习生（AI 教育方向）」岗位需求
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="skills-grid">
+            <div>
+              <div class="skill-group">
+                <div class="skill-group-title">语言 &amp; 工程基础</div>
+                <div class="skill-badges">
+                  <span class="skill-badge">Python</span>
+                  <span class="skill-badge">C （嵌入式基础）</span>
+                  <span class="skill-badge">MATLAB（数据处理 &amp; 仿真）</span>
+                  <span class="skill-badge">基础 Web（HTML / CSS / JS）</span>
+                  <span class="skill-badge">Git / GitHub（版本管理与开源协作）</span>
+                </div>
+              </div>
+              <div class="skill-group" style="margin-top:10px;">
+                <div class="skill-group-title">工程 &amp; 系统思维</div>
+                <div class="skill-badges">
+                  <span class="skill-badge">完整项目生命周期（需求→设计→实现→调试→文档）</span>
+                  <span class="skill-badge">软硬件协同开发</span>
+                  <span class="skill-badge">网络与协议基础（OSPF / VLAN / ACL）</span>
+                  <span class="skill-badge">性能与稳定性意识</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="skill-group">
+                <div class="skill-group-title">与岗位要求的匹配点</div>
+                <p class="skill-desc">
+                  <strong>对教育与 AI 的兴趣</strong>：愿意投入时间打磨面向学生的 AI 工具，相信“体验好、反馈快”的产品更能激发学习动力。<br />
+                  <strong>Python &amp; 快速学习能力</strong>：在电子设计竞赛、网络仿真项目中，已经多次完成从 0 到 1 的技术栈上手与落地，
+                  有信心在入职后 1 个月内适应团队的后端/全栈开发模式。<br />
+                  <strong>沟通与独立解决问题</strong>：学生工作和项目经历都要求频繁与队友、老师沟通，
+                  能够在遇到问题时主动拆解、尝试多种方案并及时同步进展。<br />
+                  <strong>教学 / 助教潜力</strong>：有良好的技术文档与讲解习惯，能够把复杂问题拆成有条理的步骤，
+                  适合在 AI 教育产品中做“从算法到界面”的桥梁角色。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">联系方式</div>
+          <div class="section-tagline">欢迎交流实习机会、AI 教育产品或比赛合作</div>
+        </div>
+        <div class="section-body">
+          <div class="contact-grid">
+            <div>
+              <div class="contact-card">
+                <p>
+                  如果你正在寻找一位<strong>工程基础扎实、愿意长期投入 AI 教育方向</strong>的全栈开发实习生，
+                  很期待和你进一步聊聊需求与团队氛围。
+                </p>
+                <div class="contact-cta">
+                  <a class="btn btn-primary" href="mailto:gukaiyan@bupt.edu.cn">
+                    直接给我发邮件
+                  </a>
+                  <button class="btn btn-ghost" type="button" id="copyAllBtn">
+                    复制全部联系方式
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="contact-card">
+                <div class="skill-group-title">快速信息</div>
+                <div style="font-size:12px; line-height:1.7;">
+                  <div><span class="muted">意向岗位：</span>全栈开发实习生（独立项目开发方向）</div>
+                  <div><span class="muted">可到岗时间：</span>可按学校安排灵活协商</div>
+                  <div><span class="muted">工作模式：</span>现场 / 远程 均可，建议每周固定 Review 节奏</div>
+                  <div><span class="muted">理想合作：</span>有清晰业务目标、愿意在工程质量与用户体验上投入的团队</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" aria-label="页脚">
+      <div>© <span id="year"></span> 顾开颜｜北京邮电大学 信息与通信工程</div>
+      <div class="muted">Last updated: <span id="lastUpdated"></span></div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = "personal-theme";
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+      const themeLabel = document.getElementById("themeLabel");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const yearSpan = document.getElementById("year");
+      const updatedSpan = document.getElementById("lastUpdated");
+      const copyEmailBtn = document.getElementById("copyEmailBtn");
+      const copyAllBtn = document.getElementById("copyAllBtn");
+
+      yearSpan.textContent = String(new Date().getFullYear());
+      updatedSpan.textContent = new Date().toISOString().slice(0, 10);
+
+      function setTheme(mode) {
+        if (mode === "dark") {
+          root.setAttribute("data-theme", "dark");
+          themeLabel.textContent = "深色";
+          themeToggle.firstElementChild.textContent = "🌙";
+        } else {
+          root.setAttribute("data-theme", "light");
+          themeLabel.textContent = "浅色";
+          themeToggle.firstElementChild.textContent = "☀️";
+        }
+        localStorage.setItem(STORAGE_KEY, mode);
+      }
+
+      function initTheme() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === "light" || saved === "dark") {
+          setTheme(saved);
+          return;
+        }
+        // 默认浅色优雅风
+        setTheme("light");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") || "light";
+        setTheme(current === "light" ? "dark" : "light");
+      });
+
+      initTheme();
+
+      // Smooth scroll + active nav highlight
+      function updateActiveLink() {
+        const sections = ["about", "education", "experience", "skills", "contact"];
+        const scrollPos = window.scrollY + 120;
+        let currentId = sections[0];
+
+        for (const id of sections) {
+          const el = document.getElementById(id);
+          if (!el) continue;
+          if (el.offsetTop <= scrollPos) {
+            currentId = id;
+          }
+        }
+
+        navLinks.forEach((link) => {
+          if (link.getAttribute("href") === "#" + currentId) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+      }
+
+      document.addEventListener("click", (e) => {
+        const target = e.target;
+        if (target instanceof HTMLAnchorElement && target.getAttribute("href")?.startsWith("#")) {
+          const id = target.getAttribute("href").slice(1);
+          const el = document.getElementById(id);
+          if (el) {
+            e.preventDefault();
+            const top = el.getBoundingClientRect().top + window.scrollY - 72;
+            window.scrollTo({ top, behavior: "smooth" });
+          }
+        }
+      });
+
+      window.addEventListener("scroll", () => {
+        window.requestAnimationFrame(updateActiveLink);
+      });
+      updateActiveLink();
+
+      async function copyText(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          ta.setAttribute("readonly", "");
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+          return ok;
+        } catch {
+          return false;
+        }
+      }
+
+      function attachCopyButtons() {
+        const copyBtns = document.querySelectorAll(".copy-btn");
+        copyBtns.forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            const id = btn.getAttribute("data-copy-target");
+            if (!id) return;
+            const el = document.getElementById(id);
+            if (!el) return;
+            const text = el.textContent?.trim() || "";
+            if (!text) return;
+
+            const original = btn.textContent;
+            const ok = await copyText(text);
+            btn.textContent = ok ? "已复制" : "失败";
+            setTimeout(() => {
+              btn.textContent = original;
+            }, 900);
+          });
+        });
+      }
+
+      copyEmailBtn?.addEventListener("click", async () => {
+        const emailEl = document.getElementById("emailText");
+        if (!emailEl) return;
+        const email = emailEl.textContent?.trim() || "";
+        if (!email) return;
+        copyEmailBtn.disabled = true;
+        const original = copyEmailBtn.textContent;
+        const ok = await copyText(email);
+        copyEmailBtn.textContent = ok ? "邮箱已复制" : "复制失败";
+        setTimeout(() => {
+          copyEmailBtn.textContent = original;
+          copyEmailBtn.disabled = false;
+        }, 1000);
+      });
+
+      copyAllBtn?.addEventListener("click", async () => {
+        const phone = document.getElementById("phoneText")?.textContent?.trim() || "";
+        const email = document.getElementById("emailText")?.textContent?.trim() || "";
+        const lines = [
+          "【联系方式】",
+          phone ? "手机：" + phone : "",
+          email ? "邮箱：" + email : ""
+        ].filter(Boolean);
+        if (!lines.length) return;
+        copyAllBtn.disabled = true;
+        const original = copyAllBtn.textContent;
+        const ok = await copyText(lines.join("\n"));
+        copyAllBtn.textContent = ok ? "已复制" : "复制失败";
+        setTimeout(() => {
+          copyAllBtn.textContent = original;
+          copyAllBtn.disabled = false;
+        }, 1000);
+      });
+
+      attachCopyButtons();
+    })();
+  </script>
+</body>
+</html>
